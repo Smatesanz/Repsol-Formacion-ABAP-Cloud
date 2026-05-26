@@ -1,0 +1,54 @@
+managed implementation in class zbp_smb_r_ventastp unique;
+strict ( 2 );
+with draft;
+extensible;
+
+define behavior for ZSMB_R_VENTASTP alias Ventas
+persistent table zsmb_ventas
+draft table zsmb_ventas_d
+lock master total etag UltimoCambioLocalEl
+authorization master ( global )
+etag master UltimoCambioLocalEl
+extensible
+{
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare {
+    validation validate_cliente;
+  }
+
+  field ( numbering : managed, readonly ) VentaUUID;
+  field ( readonly ) CreadoPor, CreadoEl, UltimoCambioPor, UltimoCambioEl, UltimoCambioLocalEl;
+  field ( mandatory ) IDVenta, IDCliente, IDProducto, Unidad, Moneda, Importe;
+
+  determination set_defaults on modify { create; }
+  validation validate_cliente on save { create; update; }
+  action aprobar_venta result [1] $self;
+
+  mapping for zsmb_ventas corresponding extensible
+    {
+      VentaUUID           = venta_uuid;
+      IDVenta             = idventa;
+      IDCliente           = idcliente;
+      IDProducto          = idproducto;
+      IDVendedor          = idvendedor;
+      FechaVenta          = fecha;
+      TipoVenta           = tipoventa;
+      EstadoVenta         = status;
+      Cantidad            = cantidad;
+      Unidad              = unidad;
+      Importe             = importe;
+      Moneda              = moneda;
+      CreadoPor           = created_by;
+      CreadoEl            = created_at;
+      UltimoCambioPor     = last_changed_by;
+      UltimoCambioEl      = last_changed_at;
+      UltimoCambioLocalEl = local_last_changed_at;
+    }
+}

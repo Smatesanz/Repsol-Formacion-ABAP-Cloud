@@ -1,0 +1,7 @@
+@EndUserText.label: 'DT2 Transactional APP - CDSAccessControl'
+@MappingRole: true
+
+define role ZSMB_R_VENDEDORTP {
+  grant select on ZSMB_R_VENDEDORTP
+    where ( 1 = 1 );
+}

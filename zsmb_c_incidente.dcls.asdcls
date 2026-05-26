@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZSMB_C_INCIDENTE'
+@MappingRole: true
+define role ZSMB_C_INCIDENTE {
+  grant select on ZSMB_C_INCIDENTE
+  where INHERITING CONDITIONS FROM ENTITY ZSMB_R_INCIDENTETP REPLACING { ROOT WITH _BaseEntity };
+}

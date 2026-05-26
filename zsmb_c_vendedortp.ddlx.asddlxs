@@ -1,0 +1,43 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+  typeName:       'Vendedor',
+  typeNamePlural: 'Vendedor',
+  title.value:    'IDVendedor'
+}
+
+annotate entity ZSMB_C_VENDEDORTP with
+{
+    @UI.facet: [
+      {
+        id:       'GeneralCollection',
+        type:     #COLLECTION,
+        label:    'Datos del Vendedor',
+        position: 10
+      },
+      {
+        id:              'DatosBasicos',
+        type:            #FIELDGROUP_REFERENCE,
+        targetQualifier: 'DatosBasicos',
+        parentId:        'GeneralCollection',
+        label:           'Datos Básicos',
+        position:        10
+      }
+    ]
+
+  @UI.lineItem:   [{ position: 10, importance: #HIGH }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 10, label: 'ID Vendedor' }]
+  IDVendedor;
+
+  @UI.lineItem:   [{ position: 20, importance: #HIGH }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 20, label: 'Nombre' }]
+  Nombre;
+
+  @UI.lineItem:   [{ position: 30, importance: #MEDIUM }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 30, label: 'Email' }]
+  Email;
+
+  @UI.lineItem:   [{ position: 40, importance: #LOW }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 40, label: 'Activo' }]
+  Activo;
+}

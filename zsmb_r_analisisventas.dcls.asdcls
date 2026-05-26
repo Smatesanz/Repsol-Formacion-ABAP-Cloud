@@ -1,0 +1,9 @@
+@EndUserText.label: 'DT1 Query APP - CDS AccessControl Ventas'
+@MappingRole: true
+define role ZSMB_R_ANALISISVENTAS {
+    grant 
+        select 
+            on ZSMB_C_ANALISISVENTAS
+                where 
+                    ( TipoVenta ) = aspect pfcg_auth( ZTIPOVENTA, ZTIPOVENTA, ACTVT = '03' );                 
+}

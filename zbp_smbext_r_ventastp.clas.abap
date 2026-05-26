@@ -1,0 +1,6 @@
+CLASS zbp_smbext_r_ventastp DEFINITION
+  PUBLIC ABSTRACT FINAL
+  FOR BEHAVIOR OF zsmb_r_ventastp.
+ENDCLASS.
+CLASS zbp_smbext_r_ventastp IMPLEMENTATION.
+ENDCLASS.

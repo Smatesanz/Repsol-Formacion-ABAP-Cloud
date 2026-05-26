@@ -1,0 +1,6 @@
+@EndUserText.label: 'DT2 Transactional APP - CDSAccessControl'
+@MappingRole: true
+define role ZSMB_C_VENTASTP {
+  grant select on ZSMB_C_VENTASTP
+    where inheriting conditions from entity ZSMB_R_VENTASTP;
+}

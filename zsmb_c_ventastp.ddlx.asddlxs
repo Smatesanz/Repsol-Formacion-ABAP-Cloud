@@ -1,0 +1,82 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+  typeName:       'Venta',
+  typeNamePlural: 'Ventas',
+  title.value:    'IDVenta'
+}
+
+annotate entity ZSMB_C_VENTASTP with
+{
+  @UI.facet: [
+    {
+      id:       'GeneralCollection',
+      type:     #COLLECTION,
+      label:    'Datos de la Venta',
+      position: 10
+    },
+    {
+      id:              'DatosBasicos',
+      type:            #FIELDGROUP_REFERENCE,
+      targetQualifier: 'DatosBasicos',
+      parentId:        'GeneralCollection',
+      label:           'Datos Básicos',
+      position:        10
+    },
+    {
+      id:              'DatosEconomicos',
+      type:            #FIELDGROUP_REFERENCE,
+      targetQualifier: 'DatosEconomicos',
+      parentId:        'GeneralCollection',
+      label:           'Datos Económicos',
+      position:        20
+    }
+  ]
+  @UI.hidden: true
+  VentaUUID;
+  @UI.lineItem: [{ position: 10, importance: #HIGH },
+                 { type: #FOR_ACTION, dataAction: 'aprobar_venta', label: 'Aprobar Venta' }]  
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 10, label: 'ID Venta' }]
+  IDVenta;
+  @UI.lineItem: [{ position: 20, importance: #HIGH }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 20, label: 'Cliente' }]
+  IDCliente;
+  @UI.lineItem: [{ position: 30, importance: #HIGH }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 30, label: 'Producto' }]
+  IDProducto;
+
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 40, label: 'Vendedor' }]
+  IDVendedor;
+  @UI.lineItem: [{ position: 40, importance: #MEDIUM }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 50, label: 'Fecha Venta' }]
+  FechaVenta;
+  @UI.lineItem: [{ position: 50, importance: #MEDIUM }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 60, label: 'Tipo Venta' }]
+  TipoVenta;
+  @UI.lineItem: [{ position: 60, importance: #HIGH }]
+  @UI.fieldGroup: [{ qualifier: 'DatosBasicos', position: 70, label: 'Estado' }]
+  EstadoVenta;
+  
+  @UI.lineItem: [{ position: 70, importance: #MEDIUM }]
+  @UI.fieldGroup: [{ qualifier: 'DatosEconomicos', position: 10, label: 'Cantidad' }]
+  Cantidad;
+  @UI.hidden: true
+  Unidad;  
+  @UI.lineItem: [{ position: 80, importance: #HIGH }]
+  @UI.fieldGroup: [{ qualifier: 'DatosEconomicos', position: 20, label: 'Importe' }]
+  Importe;
+  @UI.hidden: true
+  Moneda;
+
+  @UI.hidden: true
+  CreadoPor;
+  @UI.hidden: true
+  CreadoEl;
+  @UI.hidden: true
+  UltimoCambioPor;
+  @UI.hidden: true
+  UltimoCambioEl;
+  @UI.hidden: true
+  UltimoCambioLocalEl;    
+}

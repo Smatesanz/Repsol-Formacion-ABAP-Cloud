@@ -1,0 +1,107 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+  typeName:       'Venta',
+  typeNamePlural: 'Ventas',
+  title.value:    'IDVenta'
+}
+
+annotate entity ZSMB_C_ANALISISVENTAS with
+{
+  @UI.facet: [
+    {
+      id:       'InformacionNegocio',
+      type:     #COLLECTION,
+      label:    'Información de Negocio',
+      position: 10
+    },
+    {
+      id:              'DatosBasicos',
+      type:            #FIELDGROUP_REFERENCE,
+      targetQualifier: 'DatosBasicos',
+      parentId:        'InformacionNegocio',
+      label:           'Datos Básicos',
+      position:        10
+    },
+    {
+      id:              'DatosRegistro',
+      type:            #FIELDGROUP_REFERENCE,
+      targetQualifier: 'DatosRegistro',
+      parentId:        'InformacionNegocio',
+      label:           'Datos Registro',
+      position:        20
+    },
+    {
+      id:       'InformacionVenta',
+      type:     #COLLECTION,
+      label:    'Información de Venta',
+      position: 20
+    },
+    {
+      id:              'DatosVenta',
+      type:            #FIELDGROUP_REFERENCE,
+      targetQualifier: 'DatosVenta',
+      parentId:        'InformacionVenta',
+      label:           'Datos de Venta',
+      position:        10
+    }
+  ]
+  @UI.hidden: true
+  VentaUUID;
+  @UI.lineItem:       [{ position: 10, importance: #HIGH }]
+  @UI.fieldGroup:     [{ qualifier: 'DatosBasicos', position: 10, label: 'ID Venta' }]
+  IDVenta;
+  @UI.lineItem:       [{ position: 20, importance: #HIGH }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup:     [{ qualifier: 'DatosBasicos', position: 20, label: 'Cliente' }]
+  IDCliente;
+  @UI.lineItem:       [{ position: 30, importance: #HIGH }]
+  @UI.fieldGroup:     [{ qualifier: 'DatosBasicos', position: 30, label: 'Producto' }]
+  IDProducto;
+
+  @UI.fieldGroup: [{ qualifier: 'DatosVenta', position: 10, label: 'ID Vendedor' }]
+  IDVendedor;
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 20, label: 'Fecha Venta' }]
+  FechaVenta;
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 30, label: 'Antigüedad (días)' }]
+  AntiguedadDias;
+  @UI.lineItem:       [{ position: 40, importance: #HIGH, label: 'Tipo Venta' }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 40, label: 'Tipo Venta' }]
+  TipoVenta;
+  @UI.hidden: true
+  TipoVentaTexto;
+  @UI.lineItem: [{ position: 50, importance: #HIGH, criticality: 'EstadoVentaCriticidad', criticalityRepresentation: #WITH_ICON }]
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 50, label: 'Estado', criticality: 'EstadoVentaCriticidad', criticalityRepresentation: #WITH_ICON }]
+  EstadoVenta;
+  @UI.hidden: true
+  EstadoVentaTexto;
+  @UI.hidden: true
+  EstadoVentaCriticidad;
+  
+  @UI.lineItem:       [{ position: 60, importance: #MEDIUM }]
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 60, label: 'Cantidad' }]
+  Cantidad;
+  @UI.lineItem:       [{ position: 70, importance: #HIGH }]
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 70, label: 'Importe' }]
+  Importe;
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 80, label: 'IVA (21%)' }]
+  ImporteIVA;
+  @UI.hidden: true
+  Moneda;
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 90, label: 'Porcentaje Total' }]
+  PorcentajeTotal;
+  @UI.fieldGroup:     [{ qualifier: 'DatosVenta', position: 100, label: 'Ranking Ventas' }]
+  RankingVentas;
+
+  @UI.fieldGroup: [{ qualifier: 'DatosRegistro', position: 10, label: 'Creado Por' }]
+  CreadoPor;
+  @UI.fieldGroup: [{ qualifier: 'DatosRegistro', position: 20, label: 'Creado El' }]
+  CreadoEl;
+  @UI.fieldGroup: [{ qualifier: 'DatosRegistro', position: 30, label: 'Ultimo Cambio Por' }]
+  UltimoCambioPor;
+  @UI.fieldGroup: [{ qualifier: 'DatosRegistro', position: 40, label: 'Ultimo Cambio El' }]
+  UltimoCambioEl;
+  @UI.fieldGroup: [{ qualifier: 'DatosRegistro', position: 50, label: 'Ultimo Cambio Local El' }]
+  UltimoCambioLocalEl;  
+
+}

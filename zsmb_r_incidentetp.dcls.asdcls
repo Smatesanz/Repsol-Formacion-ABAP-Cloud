@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZSMB_R_INCIDENTETP'
+@MappingRole: true
+define role ZSMB_R_INCIDENTETP {
+  grant select on ZSMB_R_INCIDENTETP
+  where TRUE;
+}

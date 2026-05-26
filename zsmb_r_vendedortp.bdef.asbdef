@@ -1,0 +1,24 @@
+unmanaged implementation in class zbp_smb_r_vendedortp unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZSMB_R_VENDEDORTP alias Vendedor
+lock master total etag IDVendedor
+authorization master ( global )
+draft table zsmb_vendedor_d
+{
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate  optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  field ( readonly : update ) IDVendedor;
+  field ( mandatory ) Nombre;
+
+  mapping for zsmb_vendedor corresponding;
+}

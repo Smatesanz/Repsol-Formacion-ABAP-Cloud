@@ -1,0 +1,47 @@
+managed implementation in class ZBP_SMB_R_INCIDENTETP unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZSMB_R_INCIDENTETP alias Incidente
+persistent table ZSMB_INCIDENTE
+extensible
+draft table ZSMB_INCIDENTE_D
+etag master LocalLastChangedAt
+lock master total etag LocalLastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   IncidenteUUID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( numbering : managed )
+   IncidenteUUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZSMB_INCIDENTE corresponding extensible
+  {
+    IncidenteUUID = incidente_uuid;
+    Descripcion = descripcion;
+    FechaApertura = fecha_apertura;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+
+}
