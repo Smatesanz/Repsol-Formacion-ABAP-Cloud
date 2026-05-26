@@ -1,0 +1,12 @@
+extension implementation in class zbp_smbext_r_ventastp unique;
+
+extend behavior for Ventas
+{
+  field ( readonly : update ) ZZPrioridad;
+
+  mapping for zsmb_ventas
+  {
+    ZZPrioridad = zzprioridad;
+  }
+
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: 'DT1 Query APP - Service Ventas'
+define service ZUI_ANALISISVENTAS {
+  expose ZSMB_C_ANALISISVENTAS as AnalisisVentas;
+}

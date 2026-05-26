@@ -1,0 +1,4 @@
+@EndUserText.label: 'DT2 Transactional APP - Service Ventas'
+define service ZUI_VENTASTP {
+  expose ZSMB_C_VENTASTP as Ventas;
+}

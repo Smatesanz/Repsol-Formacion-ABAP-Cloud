@@ -1,0 +1,12 @@
+@EndUserText: {
+  label: 'Service Definition for ZSMB_C_INCIDENTE'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZSMB_C_INCIDENTE'
+  }
+}
+define service ZUI_INCIDENTETP
+  provider contracts odata_v4_ui {
+  expose ZSMB_C_INCIDENTE as Incidente;
+}

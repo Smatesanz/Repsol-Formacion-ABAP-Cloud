@@ -1,0 +1,4 @@
+@EndUserText.label: 'DT2 Transactional APP - Service Vendedor'
+define service ZUI_VENDEDORTP {
+  expose ZSMB_C_VENDEDORTP as VENDEDOR;
+}
